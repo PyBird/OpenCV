@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity implements CameraBridgeViewB
     private Mat mGray;
     private Mat mRgba;
     private int mAbsoluteFaceSize = 0;
-    private boolean isFrontCamera;
+    private boolean isFrontCamera=true;
 
 
     // 手动装载openCV库文件，以保证手机无需安装OpenCV Manager
@@ -133,6 +133,7 @@ public class MainActivity extends AppCompatActivity implements CameraBridgeViewB
     @Override
     public void onResume() {
         super.onResume();
+        _cameraBridgeViewBase.setCameraIndex(CameraBridgeViewBase.CAMERA_ID_FRONT);
         _cameraBridgeViewBase.enableView();
 //        if (!OpenCVLoader.initDebug()) {
 //            Log.d(TAG, "Internal OpenCV library not found. Using OpenCV Manager for initialization");

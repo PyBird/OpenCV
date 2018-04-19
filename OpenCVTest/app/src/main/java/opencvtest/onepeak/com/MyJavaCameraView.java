@@ -17,6 +17,7 @@ import android.view.WindowManager;
 
 import com.tzutalin.dlib.Constants;
 import com.tzutalin.dlib.FaceDet;
+import com.tzutalin.dlib.FileUtils;
 import com.tzutalin.dlib.ImageUtils;
 import com.tzutalin.dlib.VisionDetRet;
 
@@ -58,7 +59,7 @@ public class MyJavaCameraView extends JavaCameraView {
             Bitmap bitmap = ImageUtils.decodeFrameToBitmap(frame);
             if(null != bitmap){
                 Log.e("fff"," ----------------------save bitmap "+bitmap);
-                ImageUtils.saveBitmap(bitmap);
+//                ImageUtils.saveBitmap(bitmap);
             }else{
                 Log.e("fff"," ----------------------bitmap=null ");
             }
@@ -90,10 +91,11 @@ public class MyJavaCameraView extends JavaCameraView {
         mFaceLandmardkPaint.setStrokeWidth(2);
         mFaceLandmardkPaint.setStyle(Paint.Style.STROKE);
 
-//        mFaceDet = new FaceDet(Constants.getFaceShapeModelPath());
+        mFaceDet = new FaceDet(Constants.getFaceShapeModelPath());
     }
 
     private void drawPoint(List<VisionDetRet> results){
+        Log.e("fff","--------------------results= "+results);
         if (results != null) {
             for (final VisionDetRet ret : results) {
                 float resizeRatio = 1.0f;
